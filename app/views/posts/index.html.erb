@@ -1,0 +1,14 @@
+<h1>Posts</h1>
+
+<%= link_to "New Post", new_post_path if user_signed_in? && policy(Post).new? %>
+
+<ul>
+  <% @posts.each do |post| %>
+    <li>
+      <div><%= post.title %></div>
+
+      <div><%= link_to "Edit", edit_post_path(post) if policy(post).edit? %></div>
+      <div><%= link_to "Delete", post_path(post), data: { "turbo-method": :delete } if policy(post).destroy? %></div>
+    </li>
+  <% end %>
+</ul>
