@@ -1,11 +1,11 @@
 # https://github.com/heartcombo/devise#getting-started
 # https://github.com/varvet/pundit#policies
 
-class PostsController < ApplicationController
+class BatatinhaController < ApplicationController
   before_action :authenticate_user!, except: :index
 
   def index
-    @posts = policy_scope(Post)
+    @posts = PostPolicy::Scope.new(current_user, Post).resolve
   end
 
   def new

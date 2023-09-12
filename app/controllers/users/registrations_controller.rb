@@ -3,6 +3,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   prepend_before_action :require_no_authentication, only: [:cancel]
 
+
   protected
 
   def configure_sign_up_params
